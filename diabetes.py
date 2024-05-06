@@ -4,6 +4,7 @@
 #
 
 import pandas as pd 
+import matplotlib.pyplot as plt
 
 df = pd.read_csv("/Users/hermawansutrisno/Documents/tesanca's/S2/SEMESTER 1/data science/diabetes.csv")
 
@@ -29,4 +30,14 @@ df2['Glucose_Insulin_Ratio'] = df2['Glucose']/df2['Insulin']
 df['Outcome'].value_counts()
 df['Outcome'].value_counts(normalize = True)
 df.groupby('Outcome').mean()
-print(df.groupby('Outcome').mean())
+#print(df.groupby('Outcome').mean())
+
+# By group
+df.groupby(['Pregnancies', 'Outcome']).mean()
+#print(df.groupby(['Pregnancies', 'Outcome']).mean())
+
+# Chart
+df[['BMI', 'Glucose']].plot.line(figsize = (10, 5),
+                                  color = {"BMI": "red", "Glucose": "blue"})
+plt.title('Tesanca Anggara')
+plt.show()
